@@ -4,6 +4,7 @@ import loadWallet from './commands/loadWallet';
 import sendTransaction from './commands/sendTransaction';
 import viewWalletBalance from './commands/viewBalance';
 import listTransactionHistory from './commands/listTransactionHistory';
+import displayWalletActivity from "./commands/walletActivity";
 
 const program = new Command();
 
@@ -39,5 +40,12 @@ program
   .action(async () => {
     await listTransactionHistory();
   });
+
+program
+    .command("wallet-activity")
+    .description('View all wallet activity including transactions, tokens and NFTs')
+    .action(async () => {
+        await displayWalletActivity()
+    });
 
 program.parse(process.argv);
