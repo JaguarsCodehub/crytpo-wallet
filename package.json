@@ -4,6 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "type": "commonjs",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "node dist/index.js"
+  },
   "dependencies": {
     "@inquirer/prompts": "^5.0.5",
     "axios": "^1.7.2",

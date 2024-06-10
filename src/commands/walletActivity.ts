@@ -40,8 +40,20 @@ const fetchTokenBalances = async (walletAddress: string, provider: ethers.JsonRp
 
 //Function to fetch NFT DATA from OPENSEA
 const fetchNFTs = async(walletAddress: string): Promise<any[]> => {
-    const url = `https://api.opensea.io/api/v1/assets?owner=${walletAddress}`;
-    const response = await axios.get(url);
+    const response = await axios.get(
+        `https://testnets-api.opensea.io/api/v1/assets`,
+        {
+            params: {
+                owner: walletAddress,
+                order_direction: 'desc',
+                offset: '0',
+                limit: '20',
+            },
+            headers: {
+                'X-API-KEY': '857e8678f6f94826bee6b15b27364658',
+            },
+        }
+    );
     const assets = response.data.assets;
 
 
